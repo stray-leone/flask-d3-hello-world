@@ -23,9 +23,8 @@
 <script type='text/javascript' src="http://d3js.org/d3.v3.js"></script>
 <script type='text/javascript' src="http://cpettitt.github.io/project/dagre-d3/v0.1.5/dagre-d3.min.js"></script>
 <script type='text/javascript' src="http://cpettitt.github.io/project/graphlib-dot/v0.4.10/graphlib-dot.min.js"></script>
-<script type='text/javascript' src="http://cpettitt.github.io/project/graphlib-dot/v0.5.2/graphlib-dot.js"></script>
 <script type='text/javascript'>
-	var graph_string = '{{graph|safe}}'
+var graph_string = '{{graph|escape}}'
 	if (graph_string == 'digraph{a}'){
 		document.write("equal");
 	}else{
@@ -38,7 +37,7 @@
     window.onload=function(){
         // Parse the DOT syntax into a graphlib object.
         var g = graphlibDot.parse(
-				String(graph_string)
+				String('digraph{a}')
         )
 
         // Render the graphlib object using d3.
