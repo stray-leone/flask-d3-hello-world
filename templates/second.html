@@ -1,0 +1,63 @@
+<html><body>
+<style type='text/css'>
+    svg {
+        overflow: hidden;
+    }
+
+    .node rect {
+        stroke: #333;
+        stroke-width: 1.5px;
+        fill: #fff;
+    }
+
+    .edgeLabel rect {
+        fill: #fff;
+    }
+
+    .edgePath {
+        stroke: #333;
+        stroke-width: 1.5px;
+        fill: none;
+    }
+</style>
+<script type='text/javascript' src="http://d3js.org/d3.v3.js"></script>
+<script type='text/javascript' src="http://cpettitt.github.io/project/dagre-d3/v0.1.5/dagre-d3.min.js"></script>
+<script type='text/javascript' src="http://cpettitt.github.io/project/graphlib-dot/v0.4.10/graphlib-dot.min.js"></script>
+<script type='text/javascript' src="http://cpettitt.github.io/project/graphlib-dot/v0.5.2/graphlib-dot.js"></script>
+<script type='text/javascript'>
+	var graph_string = '{{graph|safe}}'
+	if (graph_string == 'digraph{a}'){
+		document.write("equal");
+	}else{
+		document.write("not equal");
+		document.write(graph_string.length);
+		document.write(graph_string);
+		document.write('digraph{a}'.length);
+		document.write('digraph{a}');
+	}
+    window.onload=function(){
+        // Parse the DOT syntax into a graphlib object.
+        var g = graphlibDot.parse(
+				String(graph_string)
+        )
+
+        // Render the graphlib object using d3.
+        var renderer = new dagreD3.Renderer();
+        renderer.run(g, d3.select("svg g"));
+
+
+        // Optional - resize the SVG element based on the contents.
+        var svg=document.querySelector('#graphContainer');
+        var bbox=svg.getBBox();
+        svg.style.width=bbox.width + 40.0 + "px";
+        svg.style.height=bbox.height + 40.0 + "px";
+    }
+</script>
+<svg id="graphContainer">
+<g/>
+<graph2/>
+</svg>
+{{graph}}
+
+'digraph {a -> b; }'
+</body></html>

@@ -1,0 +1,67 @@
+<html><body>
+<style type='text/css'>
+    svg {
+        overflow: hidden;
+    }
+
+    .node rect {
+        stroke: #333;
+        stroke-width: 1.5px;
+        fill: #fff;
+    }
+
+    .edgeLabel rect {
+        fill: #fff;
+    }
+
+    .edgePath {
+        stroke: #333;
+        stroke-width: 1.5px;
+        fill: none;
+    }
+</style>
+<script type='text/javascript' src="http://d3js.org/d3.v3.js"></script>
+<script type='text/javascript' src="http://cpettitt.github.io/project/dagre-d3/v0.1.5/dagre-d3.min.js"></script>
+<script type='text/javascript' src="http://cpettitt.github.io/project/graphlib-dot/v0.4.10/graphlib-dot.min.js"></script>
+<script type="text/javascript">
+
+// 대소문자 구분하여 비교
+var s = 'foo';
+
+if (s == 'foo') {
+  document.write('foo 와 foo 는 같군요' + '<br />');
+}
+// 결과: foo 와 foo 는 같군요
+
+
+
+
+// 대소문자 구분없이 비교 (Case Ignore)
+var s2 = 'FOO';
+
+if (s.toLowerCase() == s2.toLowerCase()) {
+  document.write('foo 와 FOO 는 같군요' + '<br />');
+}
+// 결과: foo 와 FOO 는 같군요
+
+var graph_string = '{{graph}}'
+if (graph_string == 'digraph {a -> b; }'){
+	document.write("equal");
+}else{
+	document.write("not equal");
+}
+
+
+// 숫자 비교
+
+if (111 == 111) {
+  document.write('두 숫자는 같군요' + '<br />');
+} else {
+  document.write('두 숫자는 다르군요' + '<br />');
+}
+// 결과: 두 숫자는 같군요
+
+
+document.write(graph_string)
+</script>
+</body></html>
